@@ -1,0 +1,229 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+html,
+body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 100px;
+  background-color: black;
+  color: white;
+}
+
+header .logo {
+  position: relative;
+  font-size: 2rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+header .nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+header .nav ul {
+  list-style: none;
+  margin: 0 20px;
+}
+
+/* <!-- TODO:need to adjust mobile view right side white space --> */
+header .search-button {
+  /* display: flex; */
+  position: block;
+  /* right: 8.5%;
+  top: 45%; */
+  background: transparent;
+  color: white;
+  border: 0;
+  margin-left: 3px;
+}
+
+/* TODO:need to move search ul next to search input */
+@media screen and (min-width: 0px) and (max-width: 454px) {
+  header ul .search {
+    visibility: hidden;
+    /* left: -185%;
+      margin-bottom: 30px; */
+  }
+}
+
+/* search box */
+header .search input {
+  position: relative;
+  top: 0;
+  right: 0;
+  padding: 5px;
+  border: 1;
+  outline: 0;
+  border-radius: 3px;
+}
+
+/* moves search bar to left side when 454s */
+@media screen and (min-width: 0px) and (max-width: 454px) {
+  .search input {
+    /* visibility: hidden; */
+    left: -176%;
+    margin-bottom: 39px;
+  }
+}
+
+/* <!-- TODO:need to adjust mobile view right side white space --> */
+.shopping-cart {
+  display: flex;
+  color: white;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  float: right;
+  /* margin-right: -80px; */
+  margin-left: 60px;
+  margin-top: 5px;
+}
+
+/* TODO:need to move shopping cart to left side */
+@media screen and (min-width: 0px) and (max-width: 454px) {
+  .shopping-cart {
+    /* visibility: hidden; */
+    float: right;
+  }
+}
+/* CLASSES TO MAKE MODAL WORK */
+.hidden {
+  display: none;
+}
+
+/* modal */
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+
+  background-color: white;
+  padding: 6rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+/* added overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
+
+/* modal closing X */
+.close-modal {
+  position: absolute;
+  top: 1.2rem;
+  right: 2rem;
+  font-size: 5rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* main box background */
+.showcase {
+  padding: 100px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(122, 119, 69, 1) 0%,
+    rgba(147, 153, 80, 1) 35%,
+    rgba(204, 207, 117, 1) 100%
+  );
+  height: 100vh;
+}
+
+ul .genre {
+  border: none;
+  padding: 9px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+ul .year {
+  border: none;
+  padding: 9px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+ul .add-movies {
+  border: none;
+  padding: 9px;
+  border-radius: 10px;
+}
+/* Parent div set to font-size: 0px and childs to wanted size  */
+.row {
+  font-size: 0;
+}
+img {
+  max-width: 100%;
+}
+/* .column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+} */
+
+.lower-card {
+  border-radius: 0 0 5px 5px;
+  background-color: rgb(94, 92, 92);
+  font-size: 15px;
+  color: white;
+}
+/* add to card button styles */
+.add-cart {
+  padding: 10px;
+  background-color: #4dbf00;
+  color: white;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+/* lower card text */
+.lower-card h4,
+p {
+  margin-left: 20px;
+}
+.card {
+  margin-top: 60px;
+  /* ↓ dno mby need to remove this ↓ */
+  margin-left: -30px;
+}
+/* Add rounded corners to the top left and the top right corner of the image */
+.card-box img {
+  border-radius: 5px 5px 0 0;
+}
+.card-box {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px; /* 5px rounded corners */
+  width: 200px;
+}
