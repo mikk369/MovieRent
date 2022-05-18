@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function loadMovie(search) {
     try {
       let response = await fetch(
-        `http://www.omdbapi.com/?apikey=${apikey}&s=${search}`
+        `https://www.omdbapi.com/?apikey=${apikey}&s=${search}`
       );
 
       //convert response
