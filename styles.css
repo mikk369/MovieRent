@@ -43,10 +43,9 @@ header .nav ul {
 
 /* <!-- TODO:need to adjust mobile view right side white space --> */
 header .search-button {
-  /* display: flex; */
+  cursor: pointer;
   position: block;
-  /* right: 8.5%;
-  top: 45%; */
+
   background: transparent;
   color: white;
   border: 0;
@@ -165,18 +164,21 @@ ul .genre {
   padding: 9px;
   border-radius: 10px;
   margin-right: 20px;
+  cursor: pointer;
 }
 ul .year {
   border: none;
   padding: 9px;
   border-radius: 10px;
   margin-right: 20px;
+  cursor: pointer;
 }
 
 ul .add-movies {
   border: none;
   padding: 9px;
   border-radius: 10px;
+  cursor: pointer;
 }
 /* Parent div set to font-size: 0px and childs to wanted size  */
 .row {
@@ -196,12 +198,14 @@ img {
   display: flex;
   /* lets cards go on different rows */
   flex-wrap: wrap;
+  justify-content: center;
 }
 .lower-card {
   border-radius: 0 0 5px 5px;
   background-color: rgb(94, 92, 92);
   font-size: 15px;
   color: white;
+  height: 143px;
 }
 /* add to card button styles */
 .add-cart {
@@ -209,22 +213,26 @@ img {
   background-color: #4dbf00;
   color: white;
   margin-left: 5px;
-  margin-bottom: 5px;
   border-radius: 10px;
   border: none;
   cursor: pointer;
   font-weight: bold;
+  position: absolute;
+
+  /* bottom: 45%; */
 }
+
 /* lower card text */
 .lower-card h4,
 p {
   margin-left: 20px;
+  align-self: normal;
 }
 .card {
   margin-top: 60px;
   /* ↓ dno mby need to remove this ↓ */
   /* margin-left: -30px; */
-  margin-right: 10px;
+  margin-right: 30px;
 }
 /* Add rounded corners to the top left and the top right corner of the image */
 .card-box img {
