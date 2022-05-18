@@ -22,8 +22,8 @@
         <button class="year">Year</button>
         <button class="add-movies">Add</button>
       </ul>
-      <div class="search">
-        <input type="text" placeholder="search movie" />
+      <div id="search-btn" class="search">
+        <input id="text-input" type="text" placeholder="search movie" />
         <!-- TODO:need to adjust mobile view right side white space -->
         <button class="search-button">
           <i class="fa-solid fa-magnifying-glass"></i>
@@ -37,7 +37,7 @@
     <!-- MODAL -->
     <div class="modal hidden">
       <button class="close-modal">&times;</button>
-      <h1>I'm a modal window 😍</h1>
+      <h1>ADD MOVIE</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -50,27 +50,8 @@
     </div>
     <div class="overlay hidden"></div>
     <!-- CARD -->
-    <div class="showcase">
-      <div class="row">
-        <div class="column">
-          <div class="card">
-            <div class="card-box">
-              <img
-                src="https://img.toolstud.io/240x240/3b5998/fff&text=+200x200+"
-                alt="Avatar"
-                style="width: 100%"
-              />
-              <div class="lower-card">
-                <h4><b>Movie Name</b></h4>
-                <p>Genre</p>
-                <p>Year</p>
-                <button class="add-cart">add to cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
+    <div class="showcase"><div id="movie-div" class="row"></div></div>
 
     <script src="script.js"></script>
   </body>
