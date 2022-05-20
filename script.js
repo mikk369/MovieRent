@@ -96,8 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   //Select image to add
-  const image_input = document.querySelector('.poster');
-
+  const image_input = document.querySelector('#image_input');
   let uploaded_image = '';
 
   image_input.addEventListener('change', function () {
@@ -105,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     reader.addEventListener('load', () => {
       uploaded_image = reader.result;
       document.querySelector(
-        '.poster'
+        '.added_image'
       ).style.backgroundImage = `url(${uploaded_image})`;
     });
     reader.readAsDataURL(this.files[0]);
