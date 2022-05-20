@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
       //clear old
       document.getElementById('movie-div').innerHTML = '';
       //loop over response
+
       data.Search.forEach((movie) => {
         //create a div
         const movieContainer = document.createElement('div');
@@ -86,4 +87,12 @@ document.addEventListener('DOMContentLoaded', () => {
       //console log search term
       console.log('search', search);
     });
+
+  //add search by ENTER key
+  document.addEventListener('keydown', function (e) {
+    // console.log(e.key);
+    if (e.key === 'Enter') {
+      document.getElementById('search-btn').click();
+    }
+  });
 });
