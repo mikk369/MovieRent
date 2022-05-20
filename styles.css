@@ -137,13 +137,40 @@ header .search input {
 /* modal closing X */
 .close-modal {
   position: absolute;
-  top: 1.2rem;
-  right: 2rem;
-  font-size: 5rem;
+  top: 0;
+  display: flex;
+
+  font-size: 3rem;
   color: #333;
   cursor: pointer;
   border: none;
   background: none;
+}
+
+.file-upload__button {
+  -webkit-appearance: none;
+  background-color: #4dbf00;
+  color: white;
+  margin: 6px 6px 6px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  /* position: absolute; */
+  margin-top: auto;
+  padding: 5px;
+}
+.form submit {
+  background-color: #4dbf00;
+  color: white;
+  margin: 6px 6px 6px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  /* position: absolute; */
+  margin-top: auto;
+  padding: 5px;
 }
 
 /* main box background */
@@ -219,7 +246,9 @@ img {
   margin-top: auto;
   padding: 5px;
 }
-
+.add-cart:active {
+  background: #3c9700;
+}
 /* lower card text */
 .lower-card h4,
 p {
