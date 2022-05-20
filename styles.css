@@ -111,6 +111,7 @@ header .search input {
   position: absolute;
   top: 50%;
   left: 50%;
+  /* //center to the screen */
   transform: translate(-50%, -50%);
   width: 30%;
 
@@ -188,11 +189,7 @@ img {
   max-width: 100%;
   height: 250px;
 }
-/* .column {
-  float: left;
-  width: 25%;
-  padding: 0 10px;
-} */
+
 .row {
   flex-direction: row;
   display: flex;
@@ -206,20 +203,22 @@ img {
   font-size: 15px;
   color: white;
   height: 143px;
+  display: flex;
+  flex-direction: column;
 }
 /* add to card button styles */
+
 .add-cart {
-  padding: 10px;
   background-color: #4dbf00;
   color: white;
-  margin-left: 5px;
+  margin: 6px 6px 6px;
   border-radius: 10px;
   border: none;
   cursor: pointer;
   font-weight: bold;
-  position: absolute;
-
-  /* bottom: 45%; */
+  /* position: absolute; */
+  margin-top: auto;
+  padding: 5px;
 }
 
 /* lower card text */
