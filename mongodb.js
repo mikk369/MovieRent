@@ -1,4 +1,4 @@
-const { mongoClient, MongoClient } = require('mongodb');
+const { MongoClient } = require('mongodb');
 
 async function main() {
   const uri =
