@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h4 class="movie-name"><b>${movie.Title}</b></h4>
                 <p class="genre">${movie.Genre}</p>
                 <p class="year">${movie.Year}</p>
-                <button class="add-cart">add to cart</button>
+                <button class="add-cart-button">add to cart</button>
               </div>
             </div>
             `;
@@ -112,3 +112,55 @@ document.addEventListener('DOMContentLoaded', () => {
     reader.readAsDataURL(this.files[0]);
   });
 });
+
+// Cart
+let cartIcon = document.querySelector('.shopping-cart-button');
+let cart = document.querySelector('.cart');
+let closeCart = document.querySelector('#close-cart');
+
+// Open close cart
+cartIcon.onclick = () => {
+  cart.classList.add('active');
+};
+closeCart.onclick = () => {
+  cart.classList.remove('active');
+};
+
+//Cart Working JS
+if (document.readyState == 'loading') {
+  document.addEventListener('DOMcontentLoaded', ready);
+} else {
+  ready();
+}
+
+// TODO:adding not working
+// //add to cart
+// let addCart = document.querySelector('.add-cart-button');
+// for (let i = 0; i < addCart.length; i++) {
+//   let button = addCart[i];
+//   button.addEventListener('click', addCartClicked);
+// }
+// //add To cart
+// function addCartClicked(event) {
+//   let button = event.target;
+//   let shopProducts = button.parentelement;
+//   let title = shopProducts.querySelector('.movie-name');
+//   [0].innerText;
+//   console.log(title);
+// }
+// // Making Function
+// function ready() {
+//   //Remove items from cart
+//   let removeCartButtons = document.getElementsByClassName('cart-remove');
+//   console.log(removeCartButtons);
+//   for (let i = 0; i < removeCartButtons.length; i++) {
+//     let button = removeCartButtons[i];
+//     button.addEventListener('click', removeCartItem);
+//   }
+// }
+
+// //Remove items from cart
+// function removeCartItem(event) {
+//   let buttonClicked = event.target;
+//   buttonClicked.parentelement.remove();
+// }
