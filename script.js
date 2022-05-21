@@ -1,3 +1,5 @@
+'use strict';
+
 const genreButton = document.querySelector('.genre');
 const modal = document.querySelector('.modal');
 const addMoviesButton = document.querySelector('.add-movies');
