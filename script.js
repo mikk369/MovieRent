@@ -1,6 +1,4 @@
 'use strict';
-
-const genreButton = document.querySelector('.genre');
 const modal = document.querySelector('.modal');
 const addMoviesButton = document.querySelector('.add-movies');
 const closeModalButton = document.querySelector('.close-modal');
@@ -29,6 +27,54 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+// TODO://filling the landing page
+// const api_url = 'http://www.omdbapi.com/?i=tt3896198&apikey=9f0ca0df';
+// async function getMovies() {
+//   const res = await fetch(api_url);
+//   const data = await res.json();
+//   const { Title, Genre, Year, Poster } = data;
+//   document.querySelector('.poster').textContent = Poster;
+//   document.querySelector('.movie-name').textContent = Title;
+//   document.querySelector('.year').textContent = Year;
+//   document.querySelector('.genre').textContent = Genre;
+//   // console.log(data.Title);
+//   // console.log(data.Genre);
+//   // console.log(data.Year);
+// }
+// getMovies();
+// try {
+//   //clear old
+//   // document.getElementById('movie-div').innerHTML = '';
+//   //loop over response
+
+//   getMovies.Search?.forEach((movies) => {
+//     //create a div
+//     const movieContainer = document.createElement('div');
+//     //give it a classname
+//     movieContainer.classList.add('card');
+//     //create innerHtml for div
+//     movieContainer.innerHTML = `
+//            <div class="card-box">
+//               <img
+//                 class="poster"
+//                 src="${movies.Poster}"
+//                 alt="Avatar"
+//                 height="300" width="200"
+//               />
+//               <div class="lower-card">
+//               <h4 class="movie-name"><b>${movies.Title}</b></h4>
+//                 <p class="year">${movies.Year}</p>
+//                 <button class="add-cart-button">add to cart</button>
+//               </div>
+//             </div>
+//             `;
+//     //add movieContainer to movie-div
+//     document.getElementById('movie-div').appendChild(movieContainer);
+//   });
+// } catch (error) {
+//   console.log('Error', error);
+// }
+
 //this listens for DOM content loaded just in case
 document.addEventListener('DOMContentLoaded', () => {
   //apikey
@@ -47,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('movie-div').innerHTML = '';
       //loop over response
 
-      data.Search.forEach((movie) => {
+      data.Search?.forEach((movie) => {
         //create a div
         const movieContainer = document.createElement('div');
         //give it a classname
@@ -62,8 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 height="300" width="200"
               />
               <div class="lower-card">
-                <h4 class="movie-name"><b>${movie.Title}</b></h4>
-                <p class="genre">${movie.Genre}</p>
+              <h4 class="movie-name"><b>${movie.Title}</b></h4>
                 <p class="year">${movie.Year}</p>
                 <button class="add-cart-button">add to cart</button>
               </div>
@@ -127,11 +172,11 @@ closeCart.onclick = () => {
 };
 
 //Cart Working JS
-if (document.readyState == 'loading') {
-  document.addEventListener('DOMcontentLoaded', ready);
-} else {
-  ready();
-}
+// if (document.readyState == 'loading') {
+//   document.addEventListener('DOMcontentLoaded', ready);
+// } else {
+//   ready();
+// }
 
 // TODO:adding not working
 // //add to cart
