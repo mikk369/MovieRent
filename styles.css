@@ -350,7 +350,6 @@ p {
 }
 .card {
   margin-top: 60px;
-  /* ↓ dno mby need to remove this ↓ */
   margin-right: 30px;
 }
 /* Add rounded corners to the top left and the top right corner of the image */
