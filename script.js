@@ -28,6 +28,7 @@ document.addEventListener('keydown', function (e) {
 });
 
 // TODO://filling the landing page
+
 // const api_url = 'http://www.omdbapi.com/?i=tt3896198&apikey=9f0ca0df';
 // async function getMovies() {
 //   const res = await fetch(api_url);
@@ -42,38 +43,6 @@ document.addEventListener('keydown', function (e) {
 //   // console.log(data.Year);
 // }
 // getMovies();
-// try {
-//   //clear old
-//   // document.getElementById('movie-div').innerHTML = '';
-//   //loop over response
-
-//   getMovies.Search?.forEach((movies) => {
-//     //create a div
-//     const movieContainer = document.createElement('div');
-//     //give it a classname
-//     movieContainer.classList.add('card');
-//     //create innerHtml for div
-//     movieContainer.innerHTML = `
-//            <div class="card-box">
-//               <img
-//                 class="poster"
-//                 src="${movies.Poster}"
-//                 alt="Avatar"
-//                 height="300" width="200"
-//               />
-//               <div class="lower-card">
-//               <h4 class="movie-name"><b>${movies.Title}</b></h4>
-//                 <p class="year">${movies.Year}</p>
-//                 <button class="add-cart-button">add to cart</button>
-//               </div>
-//             </div>
-//             `;
-//     //add movieContainer to movie-div
-//     document.getElementById('movie-div').appendChild(movieContainer);
-//   });
-// } catch (error) {
-//   console.log('Error', error);
-// }
 
 //this listens for DOM content loaded just in case
 document.addEventListener('DOMContentLoaded', () => {
@@ -171,13 +140,6 @@ closeCart.onclick = () => {
   cart.classList.remove('active');
 };
 
-//Cart Working JS
-// if (document.readyState == 'loading') {
-//   document.addEventListener('DOMcontentLoaded', ready);
-// } else {
-//   ready();
-// }
-
 // TODO:adding not working
 // //add to cart
 // let addCart = document.querySelector('.add-cart-button');
@@ -192,20 +154,4 @@ closeCart.onclick = () => {
 //   let title = shopProducts.querySelector('.movie-name');
 //   [0].innerText;
 //   console.log(title);
-// }
-// // Making Function
-// function ready() {
-//   //Remove items from cart
-//   let removeCartButtons = document.getElementsByClassName('cart-remove');
-//   console.log(removeCartButtons);
-//   for (let i = 0; i < removeCartButtons.length; i++) {
-//     let button = removeCartButtons[i];
-//     button.addEventListener('click', removeCartItem);
-//   }
-// }
-
-// //Remove items from cart
-// function removeCartItem(event) {
-//   let buttonClicked = event.target;
-//   buttonClicked.parentelement.remove();
 // }
