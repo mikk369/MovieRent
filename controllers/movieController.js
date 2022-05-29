@@ -1,4 +1,5 @@
 // const fs = require('fs');
+const express = require('express');
 const Movie = require('../models/movieModel');
 
 ///testing data from jsonFILE
@@ -34,14 +35,18 @@ const Movie = require('../models/movieModel');
 exports.getAllMovies = async (req, res) => {
   //find method to find all documents in Movie and convert to javascript objects
   try {
-    //sort out query objects
+    //sort out query objects, build query
     const queryObj = { ...req.query };
     const excludedFields = ['page', 'sort', 'limit', 'fields'];
     excludedFields.forEach((el) => delete queryObj[el]);
     console.log(req.query, queryObj);
 
-    const movies = await Movie.find(queryObj);
+    const query = Movie.find(queryObj);
 
+    //execute query
+    const movies = await query;
+
+    //send response
     res.status(200).json({
       status: 'success',
       //measures how much result are in movie array
