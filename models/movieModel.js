@@ -12,6 +12,8 @@ const MovieSchema = new mongoose.Schema(
       required: [true, 'A movie must have a Title'],
       //cant have dublicate Title
       unique: true,
+      maxlength: [30, 'Movie name must have less or equal 30 characters'],
+      minlength: [1, 'Movie name must have more or equal than 1 characters'],
     },
     slug: String,
     Year: {
@@ -19,6 +21,30 @@ const MovieSchema = new mongoose.Schema(
     },
     Genre: {
       type: String,
+      //Validates what genres can be entered
+      enum: {
+        values: [
+          'Action',
+          'Comedy',
+          'Drama',
+          'Fantasy',
+          'Horror',
+          'Mystery',
+          'Romance',
+          'Thriller',
+          'Adventure',
+          'Family',
+          'Film-Noir',
+          'War',
+          'Sci-Fi',
+          'Animation',
+          'Crime',
+          'Biography',
+          'Western',
+        ],
+        message:
+          'Genre must be one of the follow: Action, Comedy, Drama, Fantasy, Horror, mystery, Romance, Thriller, Adventure, Family, Crime, Film-Noir, War, Sci-Fi, Animation, Biography, Western',
+      },
     },
     Price: {
       type: Number,
@@ -35,6 +61,8 @@ const MovieSchema = new mongoose.Schema(
     },
     Rating: {
       type: Number,
+      min: [1, 'Rating must be above 1'],
+      max: [10, 'Rating must be below 10'],
     },
     Poster: {
       type: String,
@@ -69,6 +97,7 @@ MovieSchema.virtual('RuntimeInMinutes').get(function () {
 //   console.log(doc);
 //   next();
 // });
+
 //MODEL
 const Movie = mongoose.model('Movie', MovieSchema);
 
