@@ -573,9 +573,9 @@
     "Actors": "James Stewart, Grace Kelly, Wendell Corey, Thelma Ritter",
     "Plot": "A wheelchair bound photographer spies on his neighbours from his apartment window and becomes convinced one of them has committed murder.",
     "Poster": "http://ia.media-imdb.com/images/M/MV5BNDUzMTY0NTE3NF5BMl5BanBnXkFtZTYwNDEyOTM2._V1_SX300.jpg",
-    "imdbRating": "8.6",
-    "imdbVotes": "215,144",
-    "imdbID": "tt0047396",
+    "Rating": "8.6",
+    "Votes": "215,144",
+    "ID": "tt0047396",
     "Type": "movie",
     "Response": "True"
   },
