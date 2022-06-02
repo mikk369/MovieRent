@@ -39,6 +39,7 @@ const importData = async () => {
 };
 
 //DELETE ALL DATA FROM DB
+//node import-dev-data.js --import OR --delete
 const deleteData = async () => {
   try {
     await Movie.deleteMany();
