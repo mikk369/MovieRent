@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
+const validator = require('validator');
 
 //MovieSchemas
 const MovieSchema = new mongoose.Schema(
@@ -43,12 +44,23 @@ const MovieSchema = new mongoose.Schema(
           'Western',
         ],
         message:
-          'Genre must be one of the follow: Action, Comedy, Drama, Fantasy, Horror, mystery, Romance, Thriller, Adventure, Family, Crime, Film-Noir, War, Sci-Fi, Animation, Biography, Western',
+          'Genre must be one of the following: Action, Comedy, Drama, Fantasy, Horror, mystery, Romance, Thriller, Adventure, Family, Crime, Film-Noir, War, Sci-Fi, Animation, Biography, Western',
       },
     },
     Price: {
       type: Number,
       required: [true, 'A movie must have a price'],
+    },
+    //custom validator
+    priceDiscount: {
+      type: Number,
+      validate: {
+        //checks if the price is lower than the discount price. Can use validator with THIS keyword in it only when creating new document
+        validator: function (val) {
+          return val < this.Price;
+        },
+        message: 'Discount price ({VALUE}) should be below regular price',
+      },
     },
     Runtime: {
       type: Number,
@@ -87,11 +99,11 @@ MovieSchema.virtual('RuntimeInMinutes').get(function () {
   return this.Runtime * 60;
 });
 
-// // TODO: didnt work//DOCUMENT MIDDLEWARE: runs before .save() and .create()
-// MovieSchema.pre('save', function (next) {
-//   this.slug = slugify(this.name, { lower: true });
-//   next();
-// });
+// document MIDDLEWARE: runs before .save() and .create()
+MovieSchema.pre('save', function (next) {
+  this.slug = slugify(this.Title, { lower: true });
+  next();
+});
 
 // MovieSchema.post('save', function (doc, next) {
 //   console.log(doc);
