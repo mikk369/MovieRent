@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
-const validator = require('validator');
+// const validator = require('validator');
 
 //MovieSchemas
-const MovieSchema = new mongoose.Schema(
+const movieSchema = new mongoose.Schema(
   {
     Title: {
       type: String,
@@ -95,12 +95,12 @@ const MovieSchema = new mongoose.Schema(
   }
 );
 //virutal properties: adding new data output that takes Runtime and multyplies it to get minutes(cant use it in query, cause its not part of the query)
-MovieSchema.virtual('RuntimeInMinutes').get(function () {
+movieSchema.virtual('RuntimeInMinutes').get(function () {
   return this.Runtime * 60;
 });
 
 // document MIDDLEWARE: runs before .save() and .create()
-MovieSchema.pre('save', function (next) {
+movieSchema.pre('save', function (next) {
   this.slug = slugify(this.Title, { lower: true });
   next();
 });
@@ -111,6 +111,6 @@ MovieSchema.pre('save', function (next) {
 // });
 
 //MODEL
-const Movie = mongoose.model('Movie', MovieSchema);
+const Movie = mongoose.model('Movie', movieSchema);
 
 module.exports = Movie;
