@@ -2,7 +2,7 @@ const catchAsync = require('../utils/catchAsync');
 const User = require('./../models/userModel');
 
 exports.signup = catchAsync(async (req, res, next) => {
-  const newUser = await User.create(req.body);
+  const newUser = await User.create(req.body); //can use also User.save
 
   res.status(201).json({
     status: 'success',
