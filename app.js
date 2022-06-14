@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 
@@ -7,18 +8,26 @@ const movieRouter = require('./routes/movieRoutes');
 const userRouter = require('./routes/userRoutes');
 
 const app = express();
+app.set('view engine', 'pug');
+//path to views
+app.set('views', path.join(__dirname, 'views'));
+//path to public
+app.use(express.static(path.join(__dirname, 'public')));
 //1)middleware
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 app.use(express.json());
-app.use(express.static(`${__dirname}/public`));
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
+  // console.log(req.headers);
   next();
 });
 
+app.get('/', (req, res) => {
+  res.status(200).render('base');
+});
 //MOUNTING ROUTES
 app.use('/api/movies', movieRouter);
 app.use('/api/users', userRouter);
