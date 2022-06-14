@@ -50,10 +50,10 @@ userSchema.pre('save', async function (next) {
   //if password is modified then run the following code
   if (!this.isModified('password')) return next();
   //hash current password,12 means how long is the random string(salt)
-  // this.password = await bcrypt.hash(this.password, 12);
-  const salt = await bcrypt.genSalt(12);
-  const hashedPassword = await bcrypt.hash(this.password, salt);
-  this.password = hashedPassword;
+  this.password = await bcrypt.hash(this.password, 12);
+  // const salt = await bcrypt.genSalt(12);
+  // const hashedPassword = await bcrypt.hash(this.password, salt);
+  // this.password = hashedPassword;
   next();
   //to delete passwordConfirm field
   this.passwordConfirm = undefined;
