@@ -12,6 +12,12 @@ const userSchema = new mongoose.Schema({
     minlength: [1, 'User name must have atleast 1 character'],
   },
 
+  role: {
+    type: String,
+    enum: ['admin', 'user', 'moderator'],
+    default: 'user',
+  },
+
   password: {
     type: String,
     required: [true, 'Please provide password'],
