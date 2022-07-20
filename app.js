@@ -25,10 +25,13 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/', (req, res) => {
-  res.status(200).render('base');
-});
 //MOUNTING ROUTES
+app.get('/', (req, res) => {
+  res.status(200).render('base', {
+    movie: 'first movie',
+    user: 'Mikk',
+  });
+});
 app.use('/api/movies', movieRouter);
 app.use('/api/users', userRouter);
 
