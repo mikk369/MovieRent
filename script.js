@@ -28,35 +28,6 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-// TODO://filling the landing page
-//to convert array to js object
-// const movies = JSON.parse(
-//   fs.readFileSync(`${__dirname}/movie_list/moviesData.json`)
-// );
-//get all movies
-// const getAllMovies = (req, res) => {
-//   res.status(200).json({
-//     status: 'success',
-//     results: movies.length,
-//     data: {
-//       movies,
-//     },
-//   });
-// async function getMovies() {
-//   const res = await fetch(movies);
-//   const data = await res.json();
-//   const { Title, Genre, Year, Poster } = data;
-//   document.querySelector('.poster').textContent = Poster;
-//   document.querySelector('.movie-name').textContent = Title;
-//   document.querySelector('.year').textContent = Year;
-//   document.querySelector('.genre').textContent = Genre;
-//   console.log(data.Title);
-//   console.log(data.Genre);
-//   console.log(data.Year);
-//   getAllMovies();
-//   getMovies();
-// }
-
 //this listens for DOM content loaded just in case
 document.addEventListener('DOMContentLoaded', () => {
   //apikey
@@ -72,7 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
       let data = await response.json();
 
       //clear old
-      document.getElementById('movie-div').innerHTML = '';
+      // document.getElementById('movie-div').innerHTML = '';
+
       //loop over response
 
       data.Search?.forEach((movie) => {
@@ -80,6 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const movieContainer = document.createElement('div');
         //give it a classname
         movieContainer.classList.add('card');
+        //generate random price
+        let int = Math.floor(Math.random() * 9) + 1;
+
         //create innerHtml for div
         movieContainer.innerHTML = `
            <div class="card-box">
@@ -92,10 +67,13 @@ document.addEventListener('DOMContentLoaded', () => {
               <div class="lower-card">
               <h4 class="movie-name"><b>${movie.Title}</b></h4>
                 <p class="year">${movie.Year}</p>
+                <p class="price">${int}<sup>€</sup></p>
+                
                 <button class="add-cart-button">add to cart</button>
               </div>
             </div>
             `;
+
         //add movieContainer to movie-div
         document.getElementById('movie-div').appendChild(movieContainer);
       });
@@ -153,6 +131,53 @@ closeCart.onclick = () => {
   cart.classList.remove('active');
 };
 
+//if clicking anywhere outside cart, closes the cart
+document.addEventListener('mouseup', function (event) {
+  if (event.target != cart) {
+    cart.classList.remove('active');
+  }
+});
+
+//cart working
+if (document.readyState == 'loading') {
+  document.addEventListener('DOMContentLoaded', ready);
+} else {
+  ready();
+}
+
+//Function
+function ready() {
+  //remove items from cart
+  let removeCartButtons = document.getElementsByClassName('cart-remove');
+  console.log(removeCartButtons);
+  for (let i = 0; i < removeCartButtons.length; i++) {
+    let button = removeCartButtons[i];
+    button.addEventListener('click', removeCartItem);
+  }
+}
+
+//remove items from cart
+function removeCartItem() {
+  this.parentNode.remove();
+  updateTotal();
+}
+
+//update total
+function updateTotal() {
+  let cartContent = document.getElementsByClassName('cart-content')[0];
+  let cartBoxes = cartContent.getElementsByClassName('cart-box');
+  let total = 0;
+  for (let i = 0; i < cartBoxes.length; i++) {
+    let cartBox = cartBoxes[i];
+    let priceElement = cartBox.getElementsByClassName('cart-price')[0];
+    let quantityElement = cartBox.getElementsByClassName('cart-quantity')[0];
+    let price = parseFloat(priceElement.innerText.replace('$', ''));
+    let quantity = quantityElement.value;
+    total = total + price * quantity;
+
+    document.getElementsByClassName('total-price')[0].innerText = '$' + total;
+  }
+}
 // TODO:adding not working
 // //add to cart
 // let addCart = document.querySelector('.add-cart-button');
