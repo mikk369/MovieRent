@@ -105,7 +105,7 @@ header .search input {
 .cart {
   position: fixed;
   top: 9.1%;
-  right: -100%;
+  right: 0;
   width: 360px;
   min-height: 100vh;
   padding: 20px;
