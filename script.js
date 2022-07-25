@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
       let data = await response.json();
 
       //clear old
-      // document.getElementById('movie-div').innerHTML = '';
+      document.getElementById('movie-div').innerHTML = '';
 
       //loop over response
 
@@ -112,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function ready() {
       //remove items from cart
       let removeCartButtons = document.getElementsByClassName('cart-remove');
-      console.log(removeCartButtons);
       for (let i = 0; i < removeCartButtons.length; i++) {
         let button = removeCartButtons[i];
         button.addEventListener('click', removeCartItem);
@@ -128,6 +127,25 @@ document.addEventListener('DOMContentLoaded', () => {
       for (let i = 0; i < addCart.length; i++) {
         let button = addCart[i];
         button.addEventListener('click', addCartClicked);
+      }
+    }
+
+    //update total
+    function updateTotal() {
+      let cartContent = document.getElementsByClassName('cart-content')[0];
+      let cartBoxes = cartContent.getElementsByClassName('cart-box');
+      let total = 0;
+      for (let i = 0; i < cartBoxes.length; i++) {
+        let cartBox = cartBoxes[i];
+        let priceElement = cartBox.getElementsByClassName('cart-price')[0];
+        let quantityElement =
+          cartBox.getElementsByClassName('cart-quantity')[0];
+        let price = parseFloat(priceElement.innerText.replace('$', ''));
+        let quantity = quantityElement.value;
+        total = total + price * quantity;
+
+        document.getElementsByClassName('total-price')[0].innerText =
+          '$' + total;
       }
     }
 
@@ -149,63 +167,44 @@ document.addEventListener('DOMContentLoaded', () => {
       addProductToCart(title, price);
       updateTotal();
     }
-    //TODO: cardShopBox ei funka 50:00
+
     function addProductToCart(title, price) {
       let cartShopBox = document.createElement('div');
       cartShopBox.classList.add('cart-box');
       let cartItems = document.getElementsByClassName('cart-content')[0];
-      let cartItemsNames =
-        cartItems.getElementsByClassName('cart-product-title');
+      let cartItemsNames = cartItems.getElementsByClassName('movie-name');
       for (let i = 0; i < cartItemsNames.length; i++) {
         alert('You have already added this movie to cart');
         return;
       }
-    }
-    let cartboxContent = `<img
-                    src="#"
-                    alt="movie-picture"
-                    class="cart-img"
-                    />
-                      <div class="cart-product-title">MOVIE TITLE</div>
-                        <div class="cart-price">5€</div>
-                          <input type="number" value="1" class="cart-quantity" />
-                      </div>
-                    <!-- Remove Cart -->
-                    <i class="fa-solid fa-trash-can cart-remove"></i>`;
-    cartShopBox.innerHTML = cartboxContent;
-    cartItems.append(cartShopBox);
-    cartShopBox
-      .getElementsByClassName('cart-remove')[0]
-      .addEventListener('click', removeCartItem);
-    cartShopBox
-      .getElementsByClassName('cart-quantity')[0]
-      .addEventListener('change', quantityChanged);
+      //TODO: src peab lisama
+      let cartboxContent = `<img
+                      src="#"
+                      alt="movie-picture"
+                      class="poster"
+                      />
+                        <div class="movie-name"></div>
+                          <div class="cart-price">5€</div>
+                            <input type="number" value="1" class="cart-quantity" />
+                        </div>
+                      <!-- Remove Cart -->
+                      <i class="fa-solid fa-trash-can cart-remove"></i>`;
+      cartShopBox.innerHTML = cartboxContent;
+      cartItems.append(cartShopBox);
+      cartShopBox
+        .getElementsByClassName('cart-remove')[0]
+        .addEventListener('click', removeCartItem);
+      cartShopBox
+        .getElementsByClassName('cart-quantity')[0]
+        .addEventListener('change', quantityChanged);
 
-    //quantity changes
-    function quantityChanged(event) {
-      let input = event.target;
-      if (isNaN(input.value) || input.value <= 0) {
-        input.value = 1;
-      }
-      updateTotal();
-    }
-
-    //update total
-    function updateTotal() {
-      let cartContent = document.getElementsByClassName('cart-content')[0];
-      let cartBoxes = cartContent.getElementsByClassName('cart-box');
-      let total = 0;
-      for (let i = 0; i < cartBoxes.length; i++) {
-        let cartBox = cartBoxes[i];
-        let priceElement = cartBox.getElementsByClassName('cart-price')[0];
-        let quantityElement =
-          cartBox.getElementsByClassName('cart-quantity')[0];
-        let price = parseFloat(priceElement.innerText.replace('$', ''));
-        let quantity = quantityElement.value;
-        total = total + price * quantity;
-
-        document.getElementsByClassName('total-price')[0].innerText =
-          '$' + total;
+      //quantity changes
+      function quantityChanged(event) {
+        let input = event.target;
+        if (isNaN(input.value) || input.value <= 0) {
+          input.value = 1;
+        }
+        updateTotal();
       }
     }
   }
@@ -220,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
       //goto loadMovie function
       loadMovie(search);
       //console log search term
-      console.log('search', search);
+      // console.log('search', search);
     });
 
   //add search by ENTER key

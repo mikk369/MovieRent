@@ -8,9 +8,7 @@ const movieRouter = require('./routes/movieRoutes');
 const userRouter = require('./routes/userRoutes');
 
 const app = express();
-app.set('view engine', 'pug');
-//path to views
-app.set('views', path.join(__dirname, 'views'));
+
 //path to public
 app.use(express.static(path.join(__dirname, 'public')));
 //1)middleware
@@ -26,12 +24,14 @@ app.use((req, res, next) => {
 });
 
 //MOUNTING ROUTES
-app.get('/', (req, res) => {
-  res.status(200).render('base', {
-    movie: 'first movie',
-    user: 'Mikk',
-  });
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/index.html');
 });
+
+// app.post('/', function (req, res) {
+//   res.sendFile(__dirname + 'index.html');
+// });
+
 app.use('/api/movies', movieRouter);
 app.use('/api/users', userRouter);
 
